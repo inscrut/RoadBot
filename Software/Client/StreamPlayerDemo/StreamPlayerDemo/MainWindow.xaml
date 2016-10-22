@@ -2,94 +2,49 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:webEye="clr-namespace:WebEye;assembly=WebEye.StreamPlayerControl"
-        Title="RoadBot Client" Height="300" Width="400">
+        Title="RoadBot Client" Height="447.558" Width="660.911" MinWidth="200" MinHeight="160" Icon="Resources/gkdebconf-icon_4116.ico">
+    <!--<webEye:StreamPlayerControl x:Name="_streamPlayerControl" Grid.Column="0"
+                                        StreamFailed="HandlePlayerEvent"
+                                        StreamStarted="HandlePlayerEvent"
+                                        StreamStopped="HandlePlayerEvent"/> -->
     <Window.Resources>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="GrayButtonBrush">
-            <GradientStop Offset="0" Color="Gray"/>
-            <GradientStop Offset="0.1" Color="LightGray"/>
-            <GradientStop Offset="0.9" Color="LightGray"/>
-            <GradientStop Offset="1" Color="Gray"/>
-        </LinearGradientBrush>
-        <RadialGradientBrush Center="0.5,1" RadiusX="0.9" RadiusY="0.9" x:Key="BackgroundBrush">
-            <GradientStop Color="#DDDDDD" Offset="0.4" />
-            <GradientStop Color="#FFFFFF" Offset="1" />
+        <RadialGradientBrush x:Key="BGBrush" Center="1,1" RadiusX="3" RadiusY="3">
+            <GradientStop Color="Gray" Offset="0"/>
+            <GradientStop Color="White"  Offset="0.3"/>
         </RadialGradientBrush>
-        <Style TargetType="Button" x:Key="DefaultStyle">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Background" Value="{StaticResource GrayButtonBrush}"/>
-        </Style>
     </Window.Resources>
-    <Grid Background="{StaticResource BackgroundBrush}">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="3" Grid.Column="1" Background="{StaticResource GrayButtonBrush}">
-                
-            </Grid>
-            <Label Margin="5" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">RoadBot</Label>
-            <Image MouseEnter="TRIGGERED" Name="triggered" Grid.Row="2" Grid.Column="2" Source="Resources/triggered_by_mrlorgin-d9aahmc.png"/>
-            <Grid Grid.Row="1" Grid.Column="1">
+    <Grid Background="{StaticResource BGBrush}">
+        
+        <WrapPanel HorizontalAlignment="Center" Margin="10,10,10,0">
+            <Image  Margin="5" Width="150" Source="Resources/LOGOFINAL.png"/>
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <webEye:StreamPlayerControl x:Name="_streamPlayerControl" Grid.Column="0"
-                                        StreamFailed="HandlePlayerEvent"
-                                        StreamStarted="HandlePlayerEvent"
-                                        StreamStopped="HandlePlayerEvent"/>
-                <webEye:StreamPlayerControl x:Name="_streamPlayerControl2" Grid.Column="1"
-                                        StreamFailed="HandlePlayerEvent"
-                                        StreamStarted="HandlePlayerEvent"
-                                        StreamStopped="HandlePlayerEvent"/>
-
-
-                <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox x:Name="_urlTextBox"
-                     Text="rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"/>
-                    <TextBox x:Name="_statusLabel"
-                       Grid.Column="1"
-                         IsEnabled="False"/>
-                    <Button Grid.Column="2"
-                    Content=" Connect "
-                    x:Name="_playButton"
-                    Click="HandlePlayButtonClick"/>
-                    <Button Grid.Column="3"
-                    Content=" Stop "
-                    x:Name="_stopButton"
-                        IsEnabled="False"
-                    Click="HandleStopButtonClick"/>
-                    <Button Grid.Column="4"
-                    Content=" Image... "
-                    x:Name="_imageButton"
-                        IsEnabled="False"
-                    Click="HandleImageButtonClick"/>
-
-                </Grid>
+                <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label Name="StatusL" FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" FontSize="20">Connection</Label>
+                    <Image Name="img_conStatus" Opacity="0.8" Margin="5" Height="22" Source="Resources/OfflineCircle.png" />
+                </StackPanel>
+                <TextBox TextChanged="AdressInput_TextChanged" Height="20" Width="150" Margin="5" Name="AdressInput" Grid.Row="1" Grid.ColumnSpan="2"></TextBox>
+                <Button IsEnabled="False" Click="btt_connect_Click" Name="btt_connect"
+                        Margin="5,0,5,0"  Grid.Row="2" FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
+                    Connect
+                </Button>
+                <Button IsEnabled="False" Click="btt_stop_Click" Name="btt_stop"
+                        Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
+                    Stop
+                </Button>
             </Grid>
-        </Grid>
-        
-        
+            <webEye:StreamPlayerControl 
+                x:Name="_streamPlayerControl1" Grid.Column="0" Height="85" Width="150" Margin="5,5,5,0"/>
+            <webEye:StreamPlayerControl 
+                x:Name="_streamPlayerControl2" Grid.Column="0" Height="85" Width="150" Margin="5,5,5,0"/>
+        </WrapPanel>
     </Grid>
 </Window>

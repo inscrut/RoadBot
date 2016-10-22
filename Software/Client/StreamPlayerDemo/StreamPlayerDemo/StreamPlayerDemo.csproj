@@ -60,6 +60,7 @@
     <Reference Include="WebEye.StreamPlayerControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\StreamPlayerControl\StreamPlayerControl\bin\Release\WebEye.StreamPlayerControl.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -106,6 +107,18 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\Roboto-Black.ttf" />
+    <None Include="Resources\Roboto-BlackItalic.ttf" />
+    <None Include="Resources\Roboto-Bold.ttf" />
+    <None Include="Resources\Roboto-BoldItalic.ttf" />
+    <None Include="Resources\Roboto-Italic.ttf" />
+    <None Include="Resources\Roboto-Light.ttf" />
+    <None Include="Resources\Roboto-LightItalic.ttf" />
+    <None Include="Resources\Roboto-Medium.ttf" />
+    <None Include="Resources\Roboto-MediumItalic.ttf" />
+    <None Include="Resources\Roboto-Regular.ttf" />
+    <None Include="Resources\Roboto-Thin.ttf" />
+    <None Include="Resources\Roboto-ThinItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -128,7 +141,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\triggered_by_mrlorgin-d9aahmc.png" />
+    <Resource Include="Resources\LOGOFINAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gkdebconf-icon_4116.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OfflineCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OnlineCircle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

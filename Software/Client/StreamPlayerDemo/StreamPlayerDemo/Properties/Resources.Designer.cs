@@ -61,12 +61,162 @@ namespace RoadBotClient.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon gkdebconf_icon_4116 {
+            get {
+                object obj = ResourceManager.GetObject("gkdebconf_icon_4116", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap triggered_by_mrlorgin_d9aahmc {
+        internal static System.Drawing.Bitmap LOGOFINAL {
             get {
-                object obj = ResourceManager.GetObject("triggered_by_mrlorgin_d9aahmc", resourceCulture);
+                object obj = ResourceManager.GetObject("LOGOFINAL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OfflineCircle {
+            get {
+                object obj = ResourceManager.GetObject("OfflineCircle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OnlineCircle {
+            get {
+                object obj = ResourceManager.GetObject("OnlineCircle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Black {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Black", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_BlackItalic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_BlackItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_BoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_BoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Italic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Italic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Light {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_LightItalic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_LightItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Medium {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_MediumItalic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_MediumItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Thin {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Thin", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_ThinItalic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_ThinItalic", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

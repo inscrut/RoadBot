@@ -2,6 +2,7 @@
 using System.Windows;
 using Microsoft.Win32;
 using System.Threading;
+using System.Windows.Media.Imaging;
 
 namespace StreamPlayerDemo
 {
@@ -10,48 +11,88 @@ namespace StreamPlayerDemo
     /// </summary>
     public partial class MainWindow
     {
+        bool online = false;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void HandlePlayButtonClick(object sender, RoutedEventArgs e)
+        private void btt_connect_Click(object sender, RoutedEventArgs e)
         {
-            var uri = new Uri(_urlTextBox.Text);
-            _streamPlayerControl.StartPlay(uri, TimeSpan.FromSeconds(15));
-            _streamPlayerControl2.StartPlay(uri, TimeSpan.FromSeconds(15));
-            _statusLabel.Text = "Connecting...";
+            online = true;
+            checkOnline();
         }
 
-        private void HandleStopButtonClick(object sender, RoutedEventArgs e)
+        private void btt_stop_Click(object sender, RoutedEventArgs e)
         {
-            _streamPlayerControl.Stop();
-            _streamPlayerControl2.Stop();
+            online = false;
+            checkOnline();
         }
 
-        private void HandleImageButtonClick(object sender, RoutedEventArgs e)
+        private void checkOnline()
         {
+            if (online)
+            {
+                btt_stop.IsEnabled = true;
+                img_conStatus.Source = new BitmapImage(new Uri("Resources/OnlineCircle.png", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                btt_stop.IsEnabled = false;
+                img_conStatus.Source = new BitmapImage(new Uri("Resources/OfflineCircle.png", UriKind.RelativeOrAbsolute));
+            }
+        }
+
+        private void AdressInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (AdressInput.Text != "") btt_connect.IsEnabled = true;
+            else btt_connect.IsEnabled = false;
+        }
+
+        /*private void HandlePlayerEvent(object sender, RoutedEventArgs e)
+        {
+
+            if (e.RoutedEvent.Name == "StreamStarted")
+            {
+                //_statusLabel.Text = "Playing";
+            }
+            else if (e.RoutedEvent.Name == "StreamFailed")
+            {
+
+                MessageBox.Show(
+                    ((WebEye.StreamFailedEventArgs)e).Error,
+                    "Stream Player Demo",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            else if (e.RoutedEvent.Name == "StreamStopped")
+            {
+            }
+        }*/
+        /*var uri = new Uri(_urlTextBox.Text);
+_streamPlayerControl.StartPlay(uri, TimeSpan.FromSeconds(15));
+_streamPlayerControl2.StartPlay(uri, TimeSpan.FromSeconds(15));*/
+        //_streamPlayerControl.Stop();
+        //_streamPlayerControl2.Stop();
+
+        /*
             var dialog = new SaveFileDialog { Filter = "Bitmap Image|*.bmp" };
             if (dialog.ShowDialog() == true)
             {
                 _streamPlayerControl.GetCurrentFrame().Save(dialog.FileName);
-            }
-        }
+            }*/
 
-        private void UpdateButtons()
-        {
-            _playButton.IsEnabled = !_streamPlayerControl.IsPlaying; 
-            _stopButton.IsEnabled = _streamPlayerControl.IsPlaying;
-            _imageButton.IsEnabled = _streamPlayerControl.IsPlaying;
-        }
+        //_imageButton.IsEnabled = _streamPlayerControl.IsPlaying;
 
-        private void HandlePlayerEvent(object sender, RoutedEventArgs e)
+
+        /*private void HandlePlayerEvent(object sender, RoutedEventArgs e)
         {
             UpdateButtons();
 
             if (e.RoutedEvent.Name == "StreamStarted")
             {
-                _statusLabel.Text = "Playing";
+                //_statusLabel.Text = "Playing";
             }
             else if (e.RoutedEvent.Name == "StreamFailed")
             {
@@ -67,19 +108,6 @@ namespace StreamPlayerDemo
             {
                 _statusLabel.Text = "Stopped";
             }
-        }
-
-        private void TRIGGERED(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            MessageBoxResult Check = MessageBox.Show("TRIGGERED?", "TRIGGERED?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (Check == MessageBoxResult.Yes)
-            {
-                MessageBox.Show("(ง ͠° ͟ل͜ ͡°)ง");
-            }
-            if (Check == MessageBoxResult.No)
-            {
-                MessageBox.Show("( ͡° ͜ʖ ͡°)");
-            }
-        }
+        }*/
     }
 }

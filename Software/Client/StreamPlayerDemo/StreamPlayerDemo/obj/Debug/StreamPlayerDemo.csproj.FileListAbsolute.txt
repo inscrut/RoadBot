@@ -16,3 +16,14 @@ C:\Users\Vegus\Desktop\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\RoadBot Clien
 C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\bin\Debug\RoadBot Client.exe.config
 C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\RoadBot Client.exe
 C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\RoadBot Client.pdb
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\bin\Debug\RoadBot Client.exe
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\bin\Debug\RoadBot Client.pdb
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\bin\Debug\WebEye.StreamPlayerControl.pdb
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\StreamPlayerDemo.csprojResolveAssemblyReference.cache
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\MainWindow.baml
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\MainWindow.g.cs
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\App.g.cs
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\RoadBot Client_MarkupCompile.cache
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\RoadBot Client.g.resources
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\RoadBotClient.Properties.Resources.resources
+C:\Users\Vegus\Source\Repos\RoadBot\Software\Client\StreamPlayerDemo\StreamPlayerDemo\obj\Debug\StreamPlayerDemo.csproj.GenerateResource.Cache
