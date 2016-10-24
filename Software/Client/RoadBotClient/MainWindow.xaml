@@ -34,18 +34,45 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal">
-                            <Label Name="StatusL" FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" FontSize="20">Connection</Label>
+                            <Label Name="StatusL" FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" 
+                                   FontSize="20">Connection</Label>
                             <Image Name="img_conStatus" Opacity="0.8" Margin="5" Height="22" Source="res/OfflineCircle.png" />
                         </StackPanel>
-                        <TextBox FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="15" TextChanged="AdressInput_TextChanged" Height="20" Width="300" Margin="5" Name="AdressInput1" Grid.Row="1" Grid.ColumnSpan="2"/>
-                        <TextBox FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="15" TextChanged="AdressInput_TextChanged" Height="20" Width="300" Margin="5,0,5,5" Name="AdressInput2" Grid.Row="2" Grid.ColumnSpan="2"/>
+                        <TextBox FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" 
+                                 FontSize="15" TextChanged="AdressInput_TextChanged" Height="20" Width="300" Margin="5" 
+                                 Name="AdressInput1" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBox FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" 
+                                 FontSize="15" TextChanged="AdressInput_TextChanged" Height="20" Width="300" Margin="5,0,5,5" 
+                                 Name="AdressInput2" Grid.Row="2" Grid.ColumnSpan="2"/>
                         <Button IsEnabled="False" Click="btt_connect_Click" Name="btt_connect"
                         Margin="5,0,5,0"  Grid.Row="3" FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
                             Connect
                         </Button>
                         <Button IsEnabled="False" Click="btt_stop_Click" Name="btt_stop"
-                        Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
+                        Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" 
+                                FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
                             Stop
+                        </Button>
+                    </Grid>
+                    <Grid Width="310">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label HorizontalAlignment="Center" Name="DFL" Grid.ColumnSpan="2"
+                               FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" 
+                               FontSize="20">DF Debug</Label>
+                        <Button Name ="DFRandom" Grid.Row="1" Margin="5" Grid.Column="0" Click="DFRandom_Click"
+                                FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
+                            Random
+                        </Button>
+                        <Button Name="DFUsual" Grid.Row="1" Margin="5" Grid.Column="1" Click="DFUsual_Click"
+                                FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
+                            Usual
                         </Button>
                     </Grid>
                 </WrapPanel>
@@ -63,6 +90,12 @@
                 StreamFailed="_streamPlayerControl1_StreamFailed" 
                 Margin="5,5,5,0"/>
                 </WrapPanel>
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" Grid.ColumnSpan="2"
+                               FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" 
+                               FontSize="20">Depth Field</Label>
+                    <Image MouseMove="depthImage_MouseMove"  Name="depthImage" Height="210" Width="300" Margin="5"/>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

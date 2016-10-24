@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,41 @@ namespace RoadBotClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        int Dfieldlength = 10;
+        int Dfieldheight = 7;
 
-        BitmapImage depth = new BitmapImage();
+        Bitmap BMP;
+        DepthField DF;
+        ToolTip DFtt;
+
         bool online = false;
 
         public MainWindow()
         {
+            
             InitializeComponent();
             AdressInput1.Text = "rtsp://192.168.10.106:8095/live.mp4";
             AdressInput2.Text = "rtsp://192.168.10.106:8095/live2.mp4";
+            this.Loaded += MainWindow_Loaded;
+            maketooltip();
+            if (Dfieldheight != 7 || Dfieldlength != 10) DFUsual.IsEnabled = false;
+        }
+
+        private void maketooltip()
+        {
+            DFtt = new System.Windows.Controls.ToolTip();
+            DFtt.FontFamily = new System.Windows.Media.FontFamily("/RoadBot Client;component/Resources/#Roboto Bold");
+            DFtt.FontSize = 40;
+            DFtt.Placement = System.Windows.Controls.Primitives.PlacementMode.Left;
+            depthImage.ToolTip = DFtt;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            BMP = new Bitmap(Dfieldlength * 10, Dfieldheight * 10);
+            DF = new DepthField(Graphics.FromImage(BMP),Dfieldlength,Dfieldheight);
+            DF.test(true);
+            DepthRefresh();
         }
 
         private void AdressInput_TextChanged(object sender, TextChangedEventArgs e)
@@ -117,6 +144,37 @@ namespace RoadBotClient
                     "RoadBot Client",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
+        }
+
+        private void DepthRefresh()
+        {
+            depthImage.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+            BMP.GetHbitmap(),
+            IntPtr.Zero,
+            Int32Rect.Empty,
+            BitmapSizeOptions.FromEmptyOptions());
+        }
+
+        private void DFRandom_Click(object sender, RoutedEventArgs e)
+        {
+            DF.test(true);
+            DepthRefresh();
+        }
+
+        private void DFUsual_Click(object sender, RoutedEventArgs e)
+        {
+            DF.test(false);
+            DepthRefresh();
+        }
+
+        private void depthImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            System.Drawing.Point coords = 
+                new System.Drawing.Point(Convert.ToInt32(Math.Floor(e.GetPosition(depthImage).X / (depthImage.Width/ Dfieldlength))), 
+                Convert.ToInt32(Math.Floor(e.GetPosition(depthImage).Y / (depthImage.Height / Dfieldheight))));
+            if (coords.X > Dfieldlength-1) coords.X = Dfieldlength - 1;
+            if (coords.Y > Dfieldheight-1) coords.Y = Dfieldheight - 1;
+            DFtt.Content = Convert.ToString(DF.depthmass[coords.X,coords.Y]);
         }
     }
 }
