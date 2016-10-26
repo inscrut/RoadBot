@@ -90,12 +90,19 @@
                 StreamFailed="_streamPlayerControl1_StreamFailed" 
                 Margin="5,5,5,0"/>
                 </WrapPanel>
-                <StackPanel>
-                    <Label HorizontalAlignment="Center" Grid.ColumnSpan="2"
+                <WrapPanel   HorizontalAlignment="Center">
+                    <StackPanel  Name="DepthPanel" HorizontalAlignment="Center" Width="300">
+                        <Label HorizontalAlignment="Center" Grid.ColumnSpan="2"
                                FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" 
                                FontSize="20">Depth Field</Label>
-                    <Image MouseMove="depthImage_MouseMove"  Name="depthImage" Height="210" Width="300" Margin="5"/>
-                </StackPanel>
+                        <Image RenderOptions.BitmapScalingMode="NearestNeighbor" MouseMove="depthImage_MouseMove" Name="depthImage" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox Name="logs" IsReadOnly="True" Margin="5" >
+                            Логи \r\n fdfdfd \r\n gfgfgf
+                        </TextBox>
+                    </StackPanel>
+                </WrapPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

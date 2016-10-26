@@ -18,27 +18,22 @@ namespace RoadBotClient
 
         private Point _size;
         public Point size { get { return _size; } set { _size = value; } }
-
-        Graphics field;
+        
         int mindepth;
         int maxdepth;
 
-        public DepthField(Graphics g, int l, int h)
+        public DepthField(int l, int h)
         {
-            field = g;
             depthmass = new int[l, h];
             size = new Point(l,h);
         }
 
-        public void test(bool r)
+        public Bitmap test(bool r)
         {
             if (r) CreateRandomField();
             else CreateUsualField();
-            FillField();
+            return FillField();
         }
-
-        private void Create(double ratio, int x, int y) 
-            => field.FillRectangle(new SolidBrush(DepthIntoColor(ratio)), new Rectangle(new Point(x*10,y*10),new Size(10,10)));
 
         private Color DepthIntoColor(double ratio)
         {
@@ -47,8 +42,9 @@ namespace RoadBotClient
             return result;
         }
 
-        private void FillField()
+        private Bitmap FillField()
         {
+            Bitmap result = new Bitmap(size.X,size.Y);
             int buff1;
             int buff2;
             double buff3;
@@ -56,9 +52,11 @@ namespace RoadBotClient
                 {
                     buff1 = depthmass[o, i] - mindepth;
                     buff2 = maxdepth - mindepth;
+                    if (buff2 == 0) buff2 = 1;
                     buff3 = Convert.ToDouble(buff1) / Convert.ToDouble(buff2);
-                    Create( buff3, o, i );
+                    result.SetPixel(o,i,DepthIntoColor(buff3));
                 }
+            return result;
         }
 
         private void CreateRandomField()

@@ -22,7 +22,7 @@ namespace RoadBotClient
     public partial class MainWindow : Window
     {
         int Dfieldlength = 10;
-        int Dfieldheight = 7;
+        int Dfieldheight = 10;
 
         Bitmap BMP;
         DepthField DF;
@@ -52,9 +52,8 @@ namespace RoadBotClient
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            BMP = new Bitmap(Dfieldlength * 10, Dfieldheight * 10);
-            DF = new DepthField(Graphics.FromImage(BMP),Dfieldlength,Dfieldheight);
-            DF.test(true);
+            DF = new DepthField(Dfieldlength,Dfieldheight);
+            BMP = DF.test(true);
             DepthRefresh();
         }
 
@@ -117,8 +116,14 @@ namespace RoadBotClient
         {
             double NW = (MWindow.Width) / 2 - 40;
             double NH = NW * 9 / 16;
+            double LW = MWindow.Width - 380;
+            //double LH = MWindow.Height - LogoandCon.Height - 20;
+            //if (MWindow.Width < 1000 || MWindow.Height < 600) LH = 10; 
+            
             if (NW > 250)
             {
+                logs.MinWidth = LW;
+                //logs.MinHeight = LH;
                 logo.Width = 150;
                 LogoandCon.HorizontalAlignment = HorizontalAlignment.Left;
                 _streamPlayerControl1.Width = NW;
@@ -128,6 +133,8 @@ namespace RoadBotClient
             }
             else
             {
+                logs.MinWidth = 300;
+                //logs.MinHeight = 0;
                 logo.Width = 300;
                 LogoandCon.HorizontalAlignment = HorizontalAlignment.Center;
                 _streamPlayerControl1.Width =300;
@@ -157,21 +164,23 @@ namespace RoadBotClient
 
         private void DFRandom_Click(object sender, RoutedEventArgs e)
         {
-            DF.test(true);
+            BMP = DF.test(true);
             DepthRefresh();
         }
 
         private void DFUsual_Click(object sender, RoutedEventArgs e)
         {
-            DF.test(false);
+            BMP = DF.test(false);
             DepthRefresh();
         }
 
         private void depthImage_MouseMove(object sender, MouseEventArgs e)
         {
+            var buff = e.GetPosition(depthImage).Y;
+            var buff2 = (((DepthPanel.ActualWidth - 10) * Dfieldlength / (Dfieldheight * Dfieldheight)));
             System.Drawing.Point coords = 
-                new System.Drawing.Point(Convert.ToInt32(Math.Floor(e.GetPosition(depthImage).X / (depthImage.Width/ Dfieldlength))), 
-                Convert.ToInt32(Math.Floor(e.GetPosition(depthImage).Y / (depthImage.Height / Dfieldheight))));
+                new System.Drawing.Point(Convert.ToInt32(Math.Floor(e.GetPosition(depthImage).X / (((DepthPanel.ActualWidth-10)/ Dfieldlength)))), 
+                Convert.ToInt32(Math.Floor(e.GetPosition(depthImage).Y / (((DepthPanel.ActualWidth - 10) / Dfieldlength)))));
             if (coords.X > Dfieldlength-1) coords.X = Dfieldlength - 1;
             if (coords.Y > Dfieldheight-1) coords.Y = Dfieldheight - 1;
             DFtt.Content = Convert.ToString(DF.depthmass[coords.X,coords.Y]);
