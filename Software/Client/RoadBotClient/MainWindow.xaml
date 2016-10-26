@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RoadBotClient"
         xmlns:webEye="clr-namespace:WebEye;assembly=WebEye.StreamPlayerControl"
-        Title="RoadBot Client" Height="350" Width="525" MinWidth="365" MinHeight="256" Icon="res/gkdebconf-icon_4116.ico">
+        Title="RoadBot Client" Height="350" Width="525" MinWidth="365" MinHeight="256" Icon="res/gkdebconf-icon_4116.ico" ResizeMode="CanResizeWithGrip" WindowStyle="SingleBorderWindow">
     <Window.Resources>
         <Style TargetType="webEye:StreamPlayerControl">
             <Setter Property="Width" Value="300"/>

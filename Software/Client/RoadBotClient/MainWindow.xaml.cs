@@ -21,8 +21,8 @@ namespace RoadBotClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        int Dfieldlength = 10;
-        int Dfieldheight = 10;
+        int Dfieldlength = 20;
+        int Dfieldheight = 20;
 
         Bitmap BMP;
         DepthField DF;
@@ -32,7 +32,7 @@ namespace RoadBotClient
 
         public MainWindow()
         {
-            
+
             InitializeComponent();
             AdressInput1.Text = "rtsp://192.168.10.106:8095/live.mp4";
             AdressInput2.Text = "rtsp://192.168.10.106:8095/live2.mp4";
@@ -52,7 +52,7 @@ namespace RoadBotClient
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DF = new DepthField(Dfieldlength,Dfieldheight);
+            DF = new DepthField(Dfieldlength, Dfieldheight);
             BMP = DF.test(true);
             DepthRefresh();
         }
@@ -110,13 +110,16 @@ namespace RoadBotClient
             }
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e) => sizing();
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            sizing();
+        }
 
         private void sizing()
         {
-            double NW = (MWindow.Width) / 2 - 40;
+            double NW = (MWindow.ActualWidth) / 2 - 40;
             double NH = NW * 9 / 16;
-            double LW = MWindow.Width - 380;
+            double LW = MWindow.ActualWidth - 380;
             //double LH = MWindow.Height - LogoandCon.Height - 20;
             //if (MWindow.Width < 1000 || MWindow.Height < 600) LH = 10; 
             
