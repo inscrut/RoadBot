@@ -71,7 +71,7 @@ namespace RoadBotClient
             var uri1 = new Uri(AdressInput1.Text);
             var uri2 = new Uri(AdressInput2.Text);
             _streamPlayerControl1.StartPlay(uri1, TimeSpan.FromSeconds(15));
-            _streamPlayerControl2.StartPlay(uri2, TimeSpan.FromSeconds(15));
+            if(curMode == ViewMode.Full) _streamPlayerControl2.StartPlay(uri2, TimeSpan.FromSeconds(15));
         }
 
         private void btt_stop_Click(object sender, RoutedEventArgs e)
