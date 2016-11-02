@@ -1,4 +1,4 @@
-﻿<Window x:Class="RoadBotClient.MainWindow"
+﻿<Window x:Class="RoadBotClient.MainWindow" KeyDown="MWindow_KeyDown"
         Name="MWindow"
         SizeChanged="Window_SizeChanged"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -43,7 +43,7 @@
                                  Name="AdressInput1" Grid.Row="1" Grid.ColumnSpan="2"/>
                         <TextBox FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" 
                                  FontSize="15" TextChanged="AdressInput_TextChanged" Height="20" Width="300" Margin="5,0,5,5" 
-                                 Name="AdressInput2" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                 Name="AdressInput2" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Collapsed"/>
                         <Button IsEnabled="False" Click="btt_connect_Click" Name="btt_connect"
                         Margin="5,0,5,0"  Grid.Row="3" FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
                             Connect
@@ -52,27 +52,6 @@
                         Margin="5,0,5,0" Grid.Column="1" Grid.Row="3" 
                                 FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
                             Stop
-                        </Button>
-                    </Grid>
-                    <Grid Width="310">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Label HorizontalAlignment="Center" Name="DFL" Grid.ColumnSpan="2"
-                               FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" 
-                               FontSize="20">DF Debug</Label>
-                        <Button Name ="DFRandom" Grid.Row="1" Margin="5" Grid.Column="0" Click="DFRandom_Click"
-                                FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
-                            Random
-                        </Button>
-                        <Button Name="DFUsual" Grid.Row="1" Margin="5" Grid.Column="1" Click="DFUsual_Click"
-                                FontFamily="/RoadBot Client;component/Resources/#Roboto Thin" FontSize="13.333">
-                            Usual
                         </Button>
                     </Grid>
                 </WrapPanel>
@@ -84,13 +63,13 @@
                 StreamFailed="_streamPlayerControl1_StreamFailed" 
                 Margin="5,5,5,0"/>
                     <webEye:StreamPlayerControl 
-                x:Name="_streamPlayerControl2" 
+                x:Name="_streamPlayerControl2"  Visibility="Collapsed"
                 StreamStarted="_streamPlayerControl1_StreamStarted" 
                 StreamStopped="_streamPlayerControl1_StreamStarted" 
                 StreamFailed="_streamPlayerControl1_StreamFailed" 
                 Margin="5,5,5,0"/>
                 </WrapPanel>
-                <WrapPanel   HorizontalAlignment="Center">
+                <WrapPanel  Visibility="Collapsed" Name="DepthPart"  HorizontalAlignment="Center">
                     <StackPanel  Name="DepthPanel" HorizontalAlignment="Center" Width="300">
                         <Label HorizontalAlignment="Center" Grid.ColumnSpan="2"
                                FontWeight="Bold" FontFamily="/RoadBot Client;component/Resources/#Roboto Medium" 
@@ -98,9 +77,6 @@
                         <Image RenderOptions.BitmapScalingMode="NearestNeighbor" MouseMove="depthImage_MouseMove" Name="depthImage" Margin="5"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBox Name="logs" IsReadOnly="True" Margin="5" >
-                            Логи \r\n fdfdfd \r\n gfgfgf
-                        </TextBox>
                     </StackPanel>
                 </WrapPanel>
             </StackPanel>

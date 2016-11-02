@@ -21,6 +21,9 @@ namespace RoadBotClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        enum ViewMode{ Full, OnlyStream};
+        ViewMode curMode = ViewMode.OnlyStream; 
+
         int Dfieldlength = 20;
         int Dfieldheight = 20;
 
@@ -38,7 +41,7 @@ namespace RoadBotClient
             AdressInput2.Text = "rtsp://192.168.10.106:8095/live2.mp4";
             this.Loaded += MainWindow_Loaded;
             maketooltip();
-            if (Dfieldheight != 7 || Dfieldlength != 10) DFUsual.IsEnabled = false;
+            //if (Dfieldheight != 7 || Dfieldlength != 10) DFUsual.IsEnabled = false;
         }
 
         private void maketooltip()
@@ -125,18 +128,33 @@ namespace RoadBotClient
             
             if (NW > 250)
             {
-                logs.MinWidth = LW;
+                if (curMode == ViewMode.OnlyStream)
+                {
+                    logo.Width = 150;
+                    LogoandCon.HorizontalAlignment = HorizontalAlignment.Left;
+                    _streamPlayerControl1.Width = (MWindow.ActualHeight - 170)*16/9;
+                    _streamPlayerControl1.Height = (MWindow.ActualHeight) - 170; ;
+                    if (_streamPlayerControl1.Width> MWindow.ActualWidth - 40)
+                    {
+                        _streamPlayerControl1.Width = MWindow.ActualWidth - 40;
+                        _streamPlayerControl1.Height = _streamPlayerControl1.Width * 9 / 16;
+                    }
+                }
+                else
+                {
+                    logo.Width = 150;
+                    LogoandCon.HorizontalAlignment = HorizontalAlignment.Left;
+                    _streamPlayerControl1.Width = NW;
+                    _streamPlayerControl2.Width = NW;
+                    _streamPlayerControl1.Height = NH;
+                    _streamPlayerControl2.Height = NH;
+                }
+                //logs.MinWidth = LW;
                 //logs.MinHeight = LH;
-                logo.Width = 150;
-                LogoandCon.HorizontalAlignment = HorizontalAlignment.Left;
-                _streamPlayerControl1.Width = NW;
-                _streamPlayerControl2.Width = NW;
-                _streamPlayerControl1.Height = NH;
-                _streamPlayerControl2.Height = NH;
             }
             else
             {
-                logs.MinWidth = 300;
+                //logs.MinWidth = 300;
                 //logs.MinHeight = 0;
                 logo.Width = 300;
                 LogoandCon.HorizontalAlignment = HorizontalAlignment.Center;
@@ -187,6 +205,33 @@ namespace RoadBotClient
             if (coords.X > Dfieldlength-1) coords.X = Dfieldlength - 1;
             if (coords.Y > Dfieldheight-1) coords.Y = Dfieldheight - 1;
             DFtt.Content = Convert.ToString(DF.depthmass[coords.X,coords.Y]);
+        }
+
+        private void MWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.M)
+            {
+                if (curMode == ViewMode.Full) curMode = ViewMode.OnlyStream;
+                else curMode = ViewMode.Full;
+                setmode();
+            }
+        }
+
+        private void setmode()
+        {
+            if (curMode == ViewMode.OnlyStream)
+            {
+                DepthPart.Visibility = Visibility.Collapsed;
+                AdressInput2.Visibility = Visibility.Collapsed;
+                _streamPlayerControl2.Visibility = Visibility.Collapsed;
+            }
+            if (curMode == ViewMode.Full)
+            {
+                DepthPart.Visibility = Visibility.Visible;
+                AdressInput2.Visibility = Visibility.Visible;
+                _streamPlayerControl2.Visibility = Visibility.Visible;
+            }
+            sizing();
         }
     }
 }
